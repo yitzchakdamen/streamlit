@@ -28,18 +28,23 @@ score_info = (movies['score'].between(*new_score_rating))
 
 new_genre_year = (movies['genre'].isin(new_genre_list)) & (movies['year'] == year)
 
+name = st.text_input("Enter your name:")
+st.write("Hello", name)
 
-col1, col2 = st.columns([2,3])
-with col1:
-    st.write("""#### Lists of movies filtered by year and Genre """)
-    dataframe_genre_year = movies[new_genre_year].groupby(['name',  'genre'])['year'].sum()
-    dataframe_genre_year = dataframe_genre_year.reset_index()
-    st.dataframe(dataframe_genre_year, width = 400)
+# st.dataframe(dataframe_genre_year, width = 400)
 
-with col2:
-    st.write("""#### User score of movies and their genre """)
-    rating_count_year = movies[score_info].groupby('genre')['score'].count()
-    rating_count_year = rating_count_year.reset_index()
-    figpx = px.line(rating_count_year, x = 'genre', y = 'score')
-    st.plotly_chart(figpx)
+
+# col1, col2 = st.columns([2,3])
+# with col1:
+#     st.write("""#### Lists of movies filtered by year and Genre """)
+#     dataframe_genre_year = movies[new_genre_year].groupby(['name',  'genre'])['year'].sum()
+#     dataframe_genre_year = dataframe_genre_year.reset_index()
+#     st.dataframe(dataframe_genre_year, width = 400)
+
+# with col2:
+#     st.write("""#### User score of movies and their genre """)
+#     rating_count_year = movies[score_info].groupby('genre')['score'].count()
+#     rating_count_year = rating_count_year.reset_index()
+#     figpx = px.line(rating_count_year, x = 'genre', y = 'score')
+#     st.plotly_chart(figpx)
     
